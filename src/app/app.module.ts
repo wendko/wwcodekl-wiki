@@ -4,37 +4,34 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FaqComponent } from './faq/faq.component';
-import { VolunteerComponent } from './volunteer/volunteer.component';
-import { SpeakComponent } from './speak/speak.component';
-import { EventsComponent } from './events/events.component';
-import { IconsProviderModule } from './icons-provider.module';
-import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { HomeComponent } from './home/home.component';
+import { ContributeComponent } from './contribute/contribute.component';
 
 registerLocaleData(en);
 
-@NgModule({
-  declarations: [
-    AppComponent,
+const CUSTOM_COMPONENTS = [
     FaqComponent,
-    VolunteerComponent,
-    SpeakComponent,
-    EventsComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    IconsProviderModule,
-    NgZorroAntdModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-  ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
-  bootstrap: [AppComponent]
+    HomeComponent,
+    ContributeComponent
+]
+
+@NgModule({
+    declarations: [
+        AppComponent,
+        ...CUSTOM_COMPONENTS,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
